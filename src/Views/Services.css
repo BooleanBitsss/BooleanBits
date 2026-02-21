@@ -1,0 +1,195 @@
+.services-section {
+  background: #000;
+  padding: 100px 50px;
+  border-top: 1px solid #222;
+}
+
+.services-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-column {
+  padding: 40px;
+}
+
+.border-right {
+  border-right: 1px solid #222;
+}
+
+.service-stat {
+  font-size: 6rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.service-stat-sub {
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.service-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.service-description {
+  color: #888;
+  margin-bottom: 30px;
+  max-width: 400px;
+}
+
+.service-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.pill-link {
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  border: 1px solid #333;
+}
+
+.static-preview-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.static-preview-img:hover {
+  filter: grayscale(0%);
+}
+
+.testimonial-row {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.avatar-group img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  margin-right: -15px;
+}
+
+.testimonial-text {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.testimonial-text strong {
+  color: #fff;
+  display: block;
+  margin-top: 5px;
+}
+
+/* ===== Tablet (1024px) ===== */
+@media (max-width: 1024px) {
+  .services-section {
+    padding: 60px 30px;
+  }
+
+  .service-stat {
+    font-size: 4rem;
+  }
+
+  .service-column {
+    padding: 30px;
+  }
+
+  .static-preview-img {
+    height: 200px;
+  }
+}
+
+/* ===== Mobile (768px) ===== */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 50px 20px;
+  }
+
+  .services-grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .border-right {
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+
+  .service-stat {
+    font-size: 3.5rem;
+  }
+
+  .service-heading {
+    font-size: 1.6rem;
+  }
+
+  .service-column {
+    padding: 24px 0;
+  }
+
+  .service-links {
+    flex-wrap: wrap;
+  }
+
+  .static-preview-img {
+    height: 200px;
+    border-radius: 14px;
+  }
+
+  .testimonial-row {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 60px;
+    gap: 16px;
+  }
+}
+
+/* ===== Small Mobile (480px) ===== */
+@media (max-width: 480px) {
+  .services-section {
+    padding: 40px 16px;
+  }
+
+  .service-stat {
+    font-size: 2.5rem;
+  }
+
+  .service-heading {
+    font-size: 1.4rem;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+  }
+
+  .pill-link {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  .static-preview-img {
+    height: 160px;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+}
