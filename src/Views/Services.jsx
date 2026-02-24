@@ -1,44 +1,104 @@
 import React from 'react';
 import './Services.css';
+import { useTheme } from '../ThemeContext';
+
+const services = [
+  {
+    number: '01',
+    title: 'Website Development',
+    description:
+      'High-performance, SEO-optimized websites built with React, Next.js, and modern frameworks. Fast load times, responsive design, and pixel-perfect execution.',
+    tags: ['React', 'Next.js', 'SEO', 'Responsive'],
+  },
+  {
+    number: '02',
+    title: 'App Development',
+    description:
+      'Custom SaaS platforms and internal tools built with scalable cloud architecture. From MVPs to full-scale production applications.',
+    tags: ['SaaS', 'Firebase', 'Node.js', 'REST APIs'],
+  },
+  {
+    number: '03',
+    title: 'UI/UX & Branding',
+    description:
+      'User-centered design that converts. We craft intuitive interfaces, design systems, and brand identities that make your product stand out.',
+    tags: ['Figma', 'Prototyping', 'Design Systems', 'Branding'],
+  },
+];
+
+const techStack = [
+  'React', 'Next.js', 'Node.js', 'Firebase',
+  'MongoDB', 'Tailwind', 'Figma', 'Vercel',
+];
+
+const processSteps = [
+  { step: '01', title: 'Discovery', description: 'We understand your goals, audience, and requirements.' },
+  { step: '02', title: 'Design', description: 'Wireframes and prototypes for a pixel-perfect vision.' },
+  { step: '03', title: 'Development', description: 'Clean, scalable code built with modern technologies.' },
+  { step: '04', title: 'Launch', description: 'Deployment, testing, and ongoing support.' },
+];
 
 const Services = () => {
+  const { isDark } = useTheme();
+
   return (
-    <section className="services-section" id="services-section" aria-labelledby="services-heading">
-      <h2 className="sr-only" id="services-heading">Our Services</h2>
-      <div className="services-grid-layout">
-        
-        {/* Websites Column */}
-        <div className="service-column border-right">
-          <h2 className="service-stat">Websites</h2>
-          <p className="service-stat-sub">High Performance & SEO Ready</p>
-          <div className="service-links">
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="pill-link">Live Examples <span aria-hidden="true">→</span></a>
-            <a href="#payment" className="pill-link">Payment Systems <span aria-hidden="true">→</span></a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Professional website design showcase - clean dashboard interface" className="static-preview-img" width="500" height="333" loading="lazy" />
-        </div>
-
-        {/* Apps Column */}
-        <div className="service-column">
-          <h3 className="service-heading">App Development</h3>
-          <p className="service-description">
-            Custom SaaS and internal applications built with React and modern cloud infrastructure.
-          </p>
-          <div className="service-links">
-             <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="pill-link">App Showcase <span aria-hidden="true">→</span></a>
-             <a href="#payment" className="pill-link">Subscriptions <span aria-hidden="true">→</span></a>
-          </div>
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500" alt="Modern web application with data analytics dashboard" className="static-preview-img" width="500" height="333" loading="lazy" />
-        </div>
-
+    <section className={`services-section ${isDark ? 'theme-dark' : 'theme-light'}`} id="services-section">
+      {/* Section Header */}
+      <div className="services-header">
+        <span className="services-label">What We Do</span>
+        <h2 className="services-title">Services</h2>
       </div>
 
-      {/* Social Proof / Testimonial Row */}
+      {/* Services Grid */}
+      <div className="services-grid">
+        {services.map((service) => (
+          <div className="service-card" key={service.number}>
+            <span className="service-number">{service.number}</span>
+            <h3 className="service-name">{service.title}</h3>
+            <p className="service-desc">{service.description}</p>
+            <div className="service-tags">
+              {service.tags.map((tag) => (
+                <span className="service-tag" key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Tech Stack */}
+      <div className="tech-section">
+        <span className="services-label">Built With</span>
+        <h2 className="tech-title">Our Tech Stack</h2>
+        <div className="tech-grid">
+          {techStack.map((tech) => (
+            <div className="tech-item" key={tech}>
+              <span>{tech}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Our Process */}
+      <div className="process-section">
+        <span className="services-label">How We Work</span>
+        <h2 className="process-title">Our Process</h2>
+        <div className="process-grid">
+          {processSteps.map((item) => (
+            <div className="process-card" key={item.step}>
+              <span className="process-step-number">{item.step}</span>
+              <h4 className="process-step-title">{item.title}</h4>
+              <p className="process-step-desc">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonial */}
       <div className="testimonial-row">
         <div className="avatar-group">
-          <img src="https://i.pravatar.cc/150?u=1" alt="Happy client testimonial avatar" width="40" height="40" loading="lazy" />
-          <img src="https://i.pravatar.cc/150?u=2" alt="Happy client testimonial avatar" width="40" height="40" loading="lazy" />
-          <img src="https://i.pravatar.cc/150?u=3" alt="Happy client testimonial avatar" width="40" height="40" loading="lazy" />
+          <img src="https://i.pravatar.cc/150?u=1" alt="Client" loading="lazy" />
+          <img src="https://i.pravatar.cc/150?u=2" alt="Client" loading="lazy" />
+          <img src="https://i.pravatar.cc/150?u=3" alt="Client" loading="lazy" />
         </div>
         <p className="testimonial-text">
           "The BooleanBits team delivered our MVP in record time. Professional and scalable code."

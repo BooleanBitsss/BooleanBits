@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import logo from '../assets/logo.png';
+import { useTheme } from '../ThemeContext';
+import { getCalApi } from '@calcom/embed-react';
 
 const Hero = () => {
-  const [isDark, setIsDark] = useState(true);
+  const { isDark, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Initialize Cal.com API
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: isDark ? "dark" : "light",
+        styles: { branding: { brandColor: "#000000" } },
+        hideEventTypeDetails: false
+      });
+    })();
+  }, [isDark]);
 
   const scrollToServices = () => {
     document.getElementById('services-section').scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
   };
 
   const toggleMenu = () => {
@@ -41,7 +51,13 @@ const Hero = () => {
             <button className="btn-theme-toggle" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
               {isDark ? '◑' : '◐'}
             </button>
-            <button className="btn-get-quote" aria-label="Book a meeting with BooleanBits">Book a Meeting</button>
+            <button 
+              className="btn-get-quote" 
+              data-cal-link="booleanbitss/30min" 
+              aria-label="Book a meeting with BooleanBits"
+            >
+              Book a Meeting
+            </button>
             <button className="btn-hamburger" onClick={toggleMenu} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
               {menuOpen ? '✕' : '☰'}
             </button>
@@ -133,14 +149,6 @@ const Hero = () => {
         </section>
       </main>
 
-      {/* Trusted Brands Bar */}
-      <aside className="brand-bar" aria-label="Trusted by leading companies">
-        <span className="brand-logo">RAKUTEN</span>
-        <span className="brand-logo">NCR</span>
-        <span className="brand-logo">monday.com</span>
-        <span className="brand-logo">Disney</span>
-        <span className="brand-logo">Dropbox</span>
-      </aside>
     </div>
   );
 };

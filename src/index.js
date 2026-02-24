@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Prevent Webpack Dev Server's error overlay from crashing the screen 
+// due to harmless cross-origin script errors (like the Cal.com embed)
+window.addEventListener('error', e => {
+  if (e.message === 'Script error.' || e.message.includes('Script error')) {
+    e.stopImmediatePropagation();
+  }
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
